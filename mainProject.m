@@ -3,7 +3,7 @@ clc, clearvars, close all
 % Initialising function f.
 sympref('FloatingPointOutput',true);
 syms x y
-f = x^3 * exp(-x^2-y^4);
+f = x^5 * exp(-x^2-y^2);
 
 % Calculation needed functions
 v= [x y];
@@ -15,13 +15,12 @@ figure(1);
 ezsurf(f);
 figure(2);
 ezcontour(f);
-
-% Minimum found should be about -0.409916 @ [-1.22472, 0]
+%%
 
 % Testing 
 
-gDes(f, fGrad, -1, -1, 0.5, true);
+gDes(f, fGrad, -1, 1, 0.5, false,false);
 
-newton(f, fGrad, fHess, -1, -1, 0.5, false);
+newton(f, fGrad, fHess, 1, -1, 0.5, false, false);
 
-leven_marq(f, fGrad, fHess, -1, -1, 0.5, false)
+leven_marq(f, fGrad, fHess, 1, -1, 0.5, false, false)
